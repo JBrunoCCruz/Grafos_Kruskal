@@ -1,25 +1,26 @@
 /**
- * ImplementaÁ„o do Algoritmo de Kruskal    v0.0    15-10-2019
+ * Implementa√ß√£o do Algoritmo de Kruskal    v0.0    15-10-2019
  *
  * Authors: Filipe Lima, Joao Bruno, Jose Lucas e Rafael Felix
- * Instituto Federal de EducaÁ„o, CiÍncia e Tecnologia do Cear· (IFCE) - Campus Fortaleza
+ * Instituto Federal de Educa√ß√£o, Ci√™ncia e Tecnologia do Cear√° (IFCE) - Campus Fortaleza
  *
  * @Opensource
- * Este cÛdigo-fonte pode ser utilizado, copiado, estudado, modificado e redistribuÌdo sem restriÁıes.
+ * Este c√≥digo-fonte pode ser utilizado, copiado, estudado, modificado e redistribu√≠do sem restri√ß√µes.
  *
- * Este software foi desenvolvido como um exercÌcio programa da Disciplina de Grafos
+ * Este software foi desenvolvido como um exerc√≠cio programa da Disciplina de Grafos
  * do Professor Glauber Cintra do IFCE.
  *
  */
 
  /**
   * Entrada: Um Grafo Conexo
-  * SaÌda: Um ¡rvore Gerado MÌnima do Grafo (AGM)
+  * Sa√≠da: Um √Årvore Gerado M√≠nima do Grafo (AGM)
   *
-  * O programa recebe pela linha de comando o nome de um arquivo e uma descriÁ„o de
+  * O programa recebe pela linha de comando o nome de um arquivo e uma descri√ß√£o de
   * um Grafo.
+  * Exemplo: C:\Users\aut> Kruskal.exe Grafo.txt
   *
-  * O arquivo fornecido ao programa dever· ter o seguinte layout:
+  * O arquivo fornecido ao programa dever√° ter o seguinte layout:
   *
   * n m
   * u1 v1 c1
@@ -27,8 +28,8 @@
   * ...
   * um vm cm
   *
-  * onde n È a quantidade de vÈrtices, m a quantidade de arestas, ui e vi
-  * s„o as extremidades da aresta i e ci È o custo da aresta i.
+  * onde n √© a quantidade de v√©rtices, m a quantidade de arestas, ui e vi
+  * s√£o as extremidades da aresta i e ci √© o custo da aresta i.
   *
   * Ao final, o algoritmo devolve quais aresta fazem parte da AGM e seu custo
   */
@@ -40,7 +41,7 @@
 #define vertex int
 
 /**
- * Cada aresta È representada por v-w e seu custo (cst)
+ * Cada aresta √© representada por v-w e seu custo (cst)
  *
  */
 typedef struct {
@@ -49,7 +50,7 @@ typedef struct {
 } edge;
 
 /**
- * A FunÁ„o abaixo adiciona uma aresta v-w com custo (cst)
+ * A Fun√ß√£o abaixo adiciona uma aresta v-w com custo (cst)
  */
 static edge EDGE( vertex v, vertex w, int cst) {
    edge e;
@@ -59,7 +60,7 @@ static edge EDGE( vertex v, vertex w, int cst) {
 }
 
 /**
- * ImplementaÁ„o do insertion sort
+ * Implementa√ß√£o do insertion sort
  *
  * Utilizado para colocar as arestas em ordem crescente de custo
  */
@@ -77,12 +78,12 @@ void ordernarVetorDeArestas (int quantidade, edge v[]) {
 
 /**
  * O algoritmo abaixo, recebe dois inteiros m e n, o vetor de arestas com custo
- * do grafo e armazena no vetor MST a ¡rvore Geradora MÌnima do Grafo
+ * do grafo e armazena no vetor MST a √Årvore Geradora M√≠nima do Grafo
  */
 int Kruskal (int n, int m, edge vetorDeArestas[], edge MST[]) {
    int i, j, quantArestasMST = 0;
    /**
-    * Cada componente tem um vÈrtice chefe (a ideia de cores)
+    * Cada componente tem um v√©rtice chefe (a ideia de cores)
     */
    vertex chefe[n + 1];
    for (vertex v = 0; v < n + 1; ++v)
@@ -92,16 +93,16 @@ int Kruskal (int n, int m, edge vetorDeArestas[], edge MST[]) {
     */
    for (i = 0; i < m; i++) {
         /**
-         * Verifica se os chefes s„o diferentes, se forem, significa que n„o s„o da mesma componente
-         * e ent„o a aresta pode ser adicionada que n„o ocosionar· na criaÁ„o de um ciclo
+         * Verifica se os chefes s√£o diferentes, se forem, significa que n√£o s√£o da mesma componente
+         * e ent√£o a aresta pode ser adicionada que n√£o ocosionar√° na cria√ß√£o de um ciclo
          *
-         * A aresta È adicionada a AGM
+         * A aresta √© adicionada a AGM
          *
          * O chefe de uma componente deve se tornar o chefe da outra componente
          */
         if (chefe[vetorDeArestas[i].v] != chefe[vetorDeArestas[i].w]) {
             /**
-             * A aresta È adicionada a AGM
+             * A aresta √© adicionada a AGM
              */
             MST[quantArestasMST++] = vetorDeArestas[i];
             /**
@@ -122,7 +123,7 @@ int Kruskal (int n, int m, edge vetorDeArestas[], edge MST[]) {
 int main (int numargs, char *arg[]) {
     FILE *arquivo;
     /**
-     * Em arg[1], est· armazenado o nome do arquivo que contÈm o Grafo
+     * Em arg[1], est√° armazenado o nome do arquivo que cont√©m o Grafo
      */
     arquivo = fopen (arg[1], "r");
     if (arquivo == NULL) {
@@ -131,14 +132,14 @@ int main (int numargs, char *arg[]) {
     }
 
     /**
-     * n = quantidade de vÈrtices, m = quantidade de arestas
+     * n = quantidade de v√©rtices, m = quantidade de arestas
      */
     int n, m;
     fscanf (arquivo, "%d %d", &n, &m);
     int arquivoDoGrafo[m*3], posicaoAux = 0;
 
     /**
-     * Leitura do arquivo que contÈm o Grafo
+     * Leitura do arquivo que cont√©m o Grafo
      *
      * Armazena todas as arestas e seu respectivos custo no vetor arquivoDoGrafo
      *
@@ -184,7 +185,7 @@ int main (int numargs, char *arg[]) {
     }
 
     /**
-     * Gera como saÌda as arestas que compoem a AGM
+     * Gera como sa√≠da as arestas que compoem a AGM
      */
     printf("\nArvore geradora de custo minimo: ");
     for (int i = 0; i < n-1; i++) {
@@ -200,7 +201,7 @@ int main (int numargs, char *arg[]) {
     }
 
     /**
-     * Gera como saÌda, o custo da AGM
+     * Gera como sa√≠da, o custo da AGM
      */
     printf ("\n\nCusto: %d\n", custo);
 

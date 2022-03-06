@@ -1,7 +1,11 @@
 /**
  * Implementação do Algoritmo de Kruskal    v0.0    15-10-2019
  *
- * Authors: Filipe Lima, Joao Bruno, Jose Lucas e Rafael Felix
+ * Authors: Filipe de Lima Silva
+ *          João Bruno Costa Cruz
+ *          José Lucas da Costa Dantas
+ *          Rafael Felix
+ *
  * Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE) - Campus Fortaleza
  *
  * @Opensource
